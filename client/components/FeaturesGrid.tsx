@@ -3,13 +3,21 @@ interface FeatureCardProps {
   label: string;
   badge?: string;
   onClick?: () => void;
+  variant?: "default" | "gradient";
 }
 
-function FeatureCard({ icon, label, badge, onClick }: FeatureCardProps) {
-  return (
+function FeatureCard({ icon, label, badge, onClick, variant = "default" }: FeatureCardProps) {
+  const buttonClasses =
+    "relative rounded-2xl p-4 shadow-sm flex flex-col items-center justify-center min-h-[104px] w-[76px] hover:shadow-md transition-shadow";
+
+  const content = (
     <button
       onClick={onClick}
-      className="relative bg-white border border-neutral-300/70 rounded-2xl p-4 shadow-sm flex flex-col items-center justify-center min-h-[104px] w-[76px] hover:shadow-md transition-shadow"
+      className={
+        variant === "gradient"
+          ? `${buttonClasses} bg-white border border-transparent`
+          : `${buttonClasses} bg-white border border-neutral-300/70`
+      }
     >
       {/* New badge */}
       {badge && (
@@ -29,6 +37,16 @@ function FeatureCard({ icon, label, badge, onClick }: FeatureCardProps) {
       </span>
     </button>
   );
+
+  if (variant === "gradient") {
+    return (
+      <div className="p-[1px] rounded-2xl bg-gradient-to-br from-primary-400 via-fuchsia-400 to-blue-400">
+        {content}
+      </div>
+    );
+  }
+
+  return content;
 }
 
 export default function FeaturesGrid() {
@@ -161,6 +179,7 @@ export default function FeaturesGrid() {
       label: "Seguros",
       onClick: () => console.log("Insurance clicked"),
     },
+    // Removed AI tile in favor of floating bubble
   ];
 
   return (
@@ -180,6 +199,7 @@ export default function FeaturesGrid() {
             label={feature.label}
             badge={feature.badge}
             onClick={feature.onClick}
+            variant={feature.variant as any}
           />
         ))}
       </div>

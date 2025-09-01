@@ -6,6 +6,7 @@ import BenefitsSection from "./BenefitsSection";
 import NewsSection from "./NewsSection";
 import ChatTriggerCard from "./ChatTriggerCard";
 import ChatTriggerCarousel from "./ChatTriggerCarousel";
+import FloatingAssistantBubble from "./FloatingAssistantBubble";
 
 function UserHeader() {
   return (
@@ -81,6 +82,9 @@ export default function HomePage() {
       
       {/* Bottom Navigation */}
       <BottomNavigation />
+
+      {/* Floating assistant bubble */}
+      <FloatingAssistantBubble />
     </div>
   );
 }
