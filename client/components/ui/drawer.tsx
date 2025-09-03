@@ -26,7 +26,7 @@ const DrawerOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DrawerPrimitive.Overlay
     ref={ref}
-    className={cn("fixed inset-0 z-50 bg-black/80", className)}
+    className={cn("fixed inset-0 z-50 bg-black/0", className)}
     {...props}
   />
 ));
@@ -38,16 +38,26 @@ const DrawerContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <DrawerPortal>
     <DrawerOverlay />
+    {/* Make the animated layer full width to avoid centering jitter during transition */}
     <DrawerPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border bg-background",
-        className,
+        "fixed inset-x-0 bottom-0 z-50 mt-24 bg-transparent",
       )}
       {...props}
     >
-      <div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-muted" />
-      {children}
+      {/* Centered, styled drawer panel */}
+      <div className="mx-auto w-full max-w-[390px]">
+        <div
+          className={cn(
+            "flex h-auto flex-col rounded-t-[12px] border border-neutral-300 bg-white shadow-lg dark:border-neutral-700 dark:bg-neutral-900",
+            className,
+          )}
+        >
+          <div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-muted" />
+          {children}
+        </div>
+      </div>
     </DrawerPrimitive.Content>
   </DrawerPortal>
 ));
