@@ -5,7 +5,7 @@ import FeaturesGrid from "./FeaturesGrid";
 import BenefitsSection from "./BenefitsSection";
 import NewsSection from "./NewsSection";
 import ChatTriggerCard from "./ChatTriggerCard";
-import ChatTriggerCarousel from "./ChatTriggerCarousel";
+// Removed ChatTriggerCarousel from home
 import FloatingAssistantBubble from "./FloatingAssistantBubble";
 
 function UserHeader() {
@@ -64,11 +64,6 @@ export default function HomePage() {
         {/* Benefits Section */}
         <div className="mb-8">
           <BenefitsSection />
-        </div>
-        
-        {/* Chat Trigger Carousel */}
-        <div className="mb-8">
-          <ChatTriggerCarousel />
         </div>
 
         {/* News Section */}

@@ -66,6 +66,13 @@ export default function ChatTriggerCarousel() {
               defaultMessage="Crear un frasco a 7 días por el total adeudado de mi tarjeta"
             />
           </CarouselItem>
+          <CarouselItem>
+            <ChatTriggerCard
+              agentLabel="agente de préstamos"
+              titleText="No terminaste de sacar tu préstamo, queremos ayudarte"
+              defaultMessage="Algo del préstamo no me convenció"
+            />
+          </CarouselItem>
         </CarouselContent>
         <CarouselPrevious className="left-2 top-1/2 -translate-y-1/2" />
         <CarouselNext className="right-2 top-1/2 -translate-y-1/2" />
