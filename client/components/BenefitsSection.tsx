@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 interface BenefitCardProps {
   title: string;
   description: string;
@@ -66,6 +68,8 @@ function FootballBenefitCard() {
 }
 
 export default function BenefitsSection() {
+  const navigate = useNavigate();
+  
   const benefits = [
     {
       id: "sell-more",
@@ -156,8 +160,11 @@ export default function BenefitsSection() {
       {/* Tus beneficios section */}
       <div className="px-4">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-base font-medium text-neutral-800">Tus beneficios</h2>
-          <button className="text-sm font-medium text-primary-500 hover:text-primary-600">
+          <h2 className="text-base font-medium text-neutral-800">Tus promociones</h2>
+          <button 
+            onClick={() => navigate("/promociones")}
+            className="text-sm font-medium text-primary-500 hover:text-primary-600"
+          >
             Conocer más
           </button>
         </div>

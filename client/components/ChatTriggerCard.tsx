@@ -5,7 +5,7 @@ import { useToast } from "./ui/use-toast";
 import { Badge } from "./ui/badge";
 import { Send, Sparkles } from "lucide-react";
 
-type AgentType = "transferencias" | "inversiones";
+type AgentType = "transferencias" | "inversiones" | "promociones";
 
 type ChatTriggerCardProps = {
   titleText?: string; // main body sentence
@@ -54,21 +54,32 @@ export default function ChatTriggerCard({
       "bg-primary-50 text-foreground border-primary-200 dark:bg-primary-900/20 dark:text-neutral-100 dark:border-primary-800",
     inversiones:
       "bg-primary-50 text-foreground border-primary-200 dark:bg-primary-900/20 dark:text-neutral-100 dark:border-primary-800",
+    promociones:
+      "bg-primary-50 text-foreground border-primary-200 dark:bg-primary-900/20 dark:text-neutral-100 dark:border-primary-800",
   };
 
   const avatarStyles: Record<AgentType, string> = {
     transferencias: "bg-primary-200 text-primary-700 border-primary-200 dark:bg-primary-900/30 dark:text-primary-200 dark:border-primary-1000",
-    inversiones: "bg-primary-200 text-primary-700 border-primary-200 dark:bg-primary-900/30 dark:text-primary-200 dark:border-primary-1000",
+    inversiones: "bg-primary-200 text-primary-700 border-primary-200 dark:bg-primary-900/30 dark:text-primary-200 dark:border-primary-900",
+    promociones: "bg-primary-200 text-primary-700 border-primary-200 dark:bg-primary-900/30 dark:text-primary-200 dark:border-primary-900",
   };
 
   const badgeStyles: Record<AgentType, string> = {
     transferencias: "border-primary-300 text-primary-700 bg-primary-100 dark:text-primary-200 dark:border-primary-800 dark:bg-primary-900/20",
     inversiones: "border-primary-300 text-primary-700 bg-primary-100 dark:text-primary-200 dark:border-primary-800 dark:bg-primary-900/20",
+    promociones: "border-primary-300 text-primary-700 bg-primary-100 dark:text-primary-200 dark:border-primary-800 dark:bg-primary-900/20",
   };
 
   const accentButton: Record<AgentType, string> = {
     transferencias: "bg-primary-500 hover:bg-primary-600",
     inversiones: "bg-primary-500 hover:bg-primary-600",
+    promociones: "bg-primary-500 hover:bg-primary-600",
+  };
+
+  const avatarText: Record<AgentType, string> = {
+    transferencias: "TA",
+    inversiones: "AI",
+    promociones: "PA",
   };
 
   return (
@@ -82,7 +93,7 @@ export default function ChatTriggerCard({
           <div className="space-y-4">
             {/* Agent header */}
             <div className="flex items-center gap-2">
-              <div className={`h-7 w-7 rounded-full border flex items-center justify-center text-[10px] font-semibold ${avatarStyles[agentType]}`}>TA</div>
+              <div className={`h-7 w-7 rounded-full border flex items-center justify-center text-[10px] font-semibold ${avatarStyles[agentType]}`}>{avatarText[agentType]}</div>
               <Badge variant="outline" className={`capitalize ${badgeStyles[agentType]}`}>{agentLabel}</Badge>
               <Sparkles className="h-4 w-4 text-primary-500/70 opacity-60" />
             </div>
