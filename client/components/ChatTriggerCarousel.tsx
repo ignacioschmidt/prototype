@@ -39,16 +39,15 @@ export default function ChatTriggerCarousel() {
               agentType="transferencias"
               titleRich={
                 <>
-                  <span className="text-foreground/80 dark:text-neutral-300">Muchos</span>{" "}
-                  <span className="underline decoration-primary-600 dark:decoration-primary-400 decoration-2 underline-offset-4">Martes</span>{" "}
+                  <span className="text-foreground/80 dark:text-neutral-300">Vi que los</span>{" "}
+                  <span className="underline decoration-primary-600 dark:decoration-primary-400 decoration-2 underline-offset-4">martes</span>{" "}
                   <span className="text-foreground/80 dark:text-neutral-300">le</span>{" "}
                   <span className="underline decoration-primary-600 dark:decoration-primary-400 decoration-2 underline-offset-4">transferis</span>{" "}
-                  <span className="underline decoration-primary-600 dark:decoration-primary-400 decoration-2 underline-offset-4">$20.000</span>{" "}
-                  <span className="text-foreground/80 dark:text-neutral-300">pesos a</span>{" "}
+                  <span className="text-foreground/80 dark:text-neutral-300">a</span>{" "}
                   <span className="underline decoration-primary-600 dark:decoration-primary-400 decoration-2 underline-offset-4">Marta</span>
                 </>
               }
-              defaultMessage="Enviar $20.000 pesos a Marta"
+              defaultMessage="Hacé una transferencia"
             />
           </CarouselItem>
           <CarouselItem>
@@ -57,20 +56,21 @@ export default function ChatTriggerCarousel() {
               agentType="inversiones"
               titleRich={
                 <>
-                  <span className="text-foreground/80 dark:text-neutral-300">En</span>{" "}
-                  <span className="underline decoration-primary-600 dark:decoration-primary-400 decoration-2 underline-offset-4">8 días</span>{" "}
-                  <span className="text-foreground/80 dark:text-neutral-300">se te vence tu</span>{" "}
-                  <span className="underline decoration-primary-600 dark:decoration-primary-400 decoration-2 underline-offset-4">tarjeta</span>
+                  <span className="text-foreground/80 dark:text-neutral-300">Tu</span>{" "}
+                  <span className="underline decoration-primary-600 dark:decoration-primary-400 decoration-2 underline-offset-4">tarjeta</span>{" "}
+                  <span className="text-foreground/80 dark:text-neutral-300">vence en</span>{" "}
+                  <span className="underline decoration-primary-600 dark:decoration-primary-400 decoration-2 underline-offset-4">8 días</span>
                 </>
               }
-              defaultMessage="Crear un frasco a 7 días por el total adeudado de mi tarjeta"
+              defaultMessage="Armame un frasco que me rinda antes de pagar"
             />
           </CarouselItem>
           <CarouselItem>
             <ChatTriggerCard
               agentLabel="agente de préstamos"
-              titleText="No terminaste de sacar tu préstamo, queremos ayudarte"
-              defaultMessage="Algo del préstamo no me convenció"
+              agentType="prestamos"
+              titleText="Quedaste a mitad de tu solicitud de préstamo"
+              defaultMessage="Quiero ver si hay una mejor opción"
             />
           </CarouselItem>
         </CarouselContent>

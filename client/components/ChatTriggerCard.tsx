@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
 import { useToast } from "./ui/use-toast";
 import { Badge } from "./ui/badge";
 import { Send, Sparkles } from "lucide-react";
 
-type AgentType = "transferencias" | "inversiones" | "promociones";
+type AgentType = "transferencias" | "inversiones" | "promociones" | "prestamos";
 
 type ChatTriggerCardProps = {
   titleText?: string; // main body sentence
@@ -25,6 +26,7 @@ export default function ChatTriggerCard({
   onStartChat,
 }: ChatTriggerCardProps) {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [message, setMessage] = useState(
     defaultMessage ?? "Enviar $20.000 pesos a Marta",
   );
@@ -45,7 +47,12 @@ export default function ChatTriggerCard({
     if (onStartChat) {
       onStartChat(text);
     } else {
-      toast({ title: "Iniciando chat", description: text });
+      // Navigate to chat with agent type and initial message
+      const params = new URLSearchParams({
+        agent: agentType,
+        message: text
+      });
+      navigate(`/chat?${params.toString()}`);
     }
   }
 
@@ -56,30 +63,36 @@ export default function ChatTriggerCard({
       "bg-primary-50 text-foreground border-primary-200 dark:bg-primary-900/20 dark:text-neutral-100 dark:border-primary-800",
     promociones:
       "bg-primary-50 text-foreground border-primary-200 dark:bg-primary-900/20 dark:text-neutral-100 dark:border-primary-800",
+    prestamos:
+      "bg-primary-50 text-foreground border-primary-200 dark:bg-primary-900/20 dark:text-neutral-100 dark:border-primary-800",
   };
 
   const avatarStyles: Record<AgentType, string> = {
     transferencias: "bg-primary-200 text-primary-700 border-primary-200 dark:bg-primary-900/30 dark:text-primary-200 dark:border-primary-1000",
     inversiones: "bg-primary-200 text-primary-700 border-primary-200 dark:bg-primary-900/30 dark:text-primary-200 dark:border-primary-900",
     promociones: "bg-primary-200 text-primary-700 border-primary-200 dark:bg-primary-900/30 dark:text-primary-200 dark:border-primary-900",
+    prestamos: "bg-primary-200 text-primary-700 border-primary-200 dark:bg-primary-900/30 dark:text-primary-200 dark:border-primary-900",
   };
 
   const badgeStyles: Record<AgentType, string> = {
     transferencias: "border-primary-300 text-primary-700 bg-primary-100 dark:text-primary-200 dark:border-primary-800 dark:bg-primary-900/20",
     inversiones: "border-primary-300 text-primary-700 bg-primary-100 dark:text-primary-200 dark:border-primary-800 dark:bg-primary-900/20",
     promociones: "border-primary-300 text-primary-700 bg-primary-100 dark:text-primary-200 dark:border-primary-800 dark:bg-primary-900/20",
+    prestamos: "border-primary-300 text-primary-700 bg-primary-100 dark:text-primary-200 dark:border-primary-800 dark:bg-primary-900/20",
   };
 
   const accentButton: Record<AgentType, string> = {
     transferencias: "bg-primary-500 hover:bg-primary-600",
     inversiones: "bg-primary-500 hover:bg-primary-600",
     promociones: "bg-primary-500 hover:bg-primary-600",
+    prestamos: "bg-primary-500 hover:bg-primary-600",
   };
 
   const avatarText: Record<AgentType, string> = {
     transferencias: "TA",
     inversiones: "AI",
     promociones: "PA",
+    prestamos: "PR",
   };
 
   return (

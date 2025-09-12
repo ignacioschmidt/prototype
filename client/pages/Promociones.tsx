@@ -91,7 +91,7 @@ function PromocionesFloatingBubble() {
     <Drawer>
       <DrawerTrigger asChild>
         <button
-          className="fixed bottom-20 right-1/2 translate-x-[180px] md:translate-x-[195px] z-40 rounded-full p-[2px] bg-gradient-to-br from-primary-400 via-fuchsia-400 to-blue-400 shadow-[0_8px_20px_-8px_rgba(80,0,127,0.35)]"
+          className="fixed bottom-20 right-1/2 translate-x-[180px] md:translate-x-[195px] z-40 rounded-full p-[2px] bg-gradient-to-br from-primary-400 via-fuchsia-400 to-blue-400 shadow-[0_8px_20px_-8px_rgba(80,0,127,0.35)] relative"
           aria-label="Abrir asistente de promociones"
         >
           <div className="rounded-full bg-white dark:bg-neutral-900 w-12 h-12 flex items-center justify-center overflow-hidden">
@@ -105,6 +105,11 @@ function PromocionesFloatingBubble() {
             {!imageLoaded && <AssistantFaceIcon size={20} />}
             <span className="sr-only">Asistente de promociones</span>
           </div>
+          
+          {/* Red notification dot */}
+          <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white dark:border-neutral-900 flex items-center justify-center pointer-events-none">
+            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+          </div>
         </button>
       </DrawerTrigger>
       <DrawerContent className="pb-6">
@@ -116,10 +121,10 @@ function PromocionesFloatingBubble() {
           <ChatTriggerCard
             titleRich={
               <span>
-                Encontrá las mejores <span className="underline decoration-primary-600 dark:decoration-primary-400">promociones</span> cerca tuyo
+                Tenemos <span className="underline decoration-primary-600 dark:decoration-primary-400">promos</span> cerca <span className="underline decoration-primary-600 dark:decoration-primary-400">tuyo</span>!
               </span>
             }
-            defaultMessage="Mostrame las promos vigentes cerca de mí"
+            defaultMessage="Mostrame qué promos puedo aprovechar"
             agentLabel="agente de promociones"
             agentType="promociones"
             onStartChat={(message) => {
